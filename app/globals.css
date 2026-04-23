@@ -1,25 +1,67 @@
 @import "tailwindcss";
 
-/* ---------- Design tokens (from design.md) ----------
-   Typography font families (--font-sans / -serif / -label) are set on <html>
-   by next/font/local in app/layout.tsx. We do NOT redeclare them in :root —
-   that would defeat the point of `variable` in next/font. Tailwind v4's
-   @theme block below exposes them as utilities (font-sans, font-serif,
-   font-label) without `inline`, so the var() references stay live. */
+/* =========================================================================
+   Design tokens — verbatim from design.md (Humann UX - Phase 1, 2026-04-18).
+   DO NOT edit values here; update design.md and re-sync.
+   ========================================================================= */
 :root {
-  --color-brand-red: #bc0f0f;
-  --color-neutral-900: #414141;
-  --color-neutral-700: #707070;
-  --color-neutral-500: #a0a0a0;
-  --color-neutral-300: #d9d9d9;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-0: #ffffff;
+  /* ── Colour tokens ──────────────────── */
+  --primitive-color-brand-red: #bc0f0f;
+  --primitive-color-neutral-white: #ffffff;
+  --primitive-color-neutral-900: #414141;
+  --primitive-color-neutral-700: #767676;
+  --primitive-color-neutral-500: #a0a0a0;
+  --primitive-color-neutral-200: #d9d9db;
+  --primitive-color-neutral-100: #f5f5f5;
+  --primitive-color-neutral-black: #000000;
+  --primitive-color-neutral-50: #f5f5f5cc;
 
-  --surface-brand: var(--color-brand-red);
-  --surface-default: var(--color-neutral-0);
-  --text-primary: var(--color-neutral-900);
-  --text-inverse: var(--color-neutral-0);
+  --primitive-color-brand-dark-red: #8c0132;
+  --primitive-color-brand-light-red: #d72a2a;
+  --primitive-color-brand-pink: #e6305e;
+  --primitive-color-brand-orange: #d54427;
+  --primitive-color-brand-purple: #b1369a;
+  --primitive-color-brand-sport: #e9ff6d;
 
+  --semantic-surface-color-background-page: #ffffff;
+  --semantic-surface-color-background-subtle: #f5f5f5;
+  --semantic-surface-color-surface-default: #ffffff;
+  --semantic-surface-color-surface-subtle: #f5f5f5;
+  --semantic-surface-color-surface-brand: #bc0f0f;
+  --semantic-surface-color-surface-inverse: #767676;
+  --semantic-surface-color-surface-bloodpressure: #8c0132;
+  --semantic-surface-color-surface-bloodflow: #d72a2a;
+  --semantic-surface-color-surface-metabolic: #e6305e;
+  --semantic-surface-color-surface-cholesterol: #d54427;
+  --semantic-surface-color-surface-cognitive: #b1369a;
+  --semantic-surface-color-surface-sport: #e9ff6d;
+
+  --semantic-text-color-text-primary: #414141;
+  --semantic-text-color-text-secondary: #767676;
+  --semantic-text-color-text-tertiary: #a0a0a0;
+  --semantic-text-color-text-inverse: #ffffff;
+  --semantic-text-color-text-inverse-subtle: #f5f5f5cc;
+  --semantic-text-color-text-brand: #bc0f0f;
+
+  --semantic-border-color-border-subtle: #d9d9db;
+  --semantic-border-color-border-primary: #bc0f0f;
+  --semantic-border-color-border-inverse: #ffffff;
+  --semantic-border-color-border-default: #a0a0a0;
+
+  --button-surface-color-button-surface-primary: #bc0f0f;
+  --button-surface-color-button-surface-secondary: #000000;
+  --button-surface-color-button-surface-tertiary: #d9d9db;
+  --button-surface-color-button-surface-inverse: #ffffff;
+  --button-text-color-button-text-default: #ffffff;
+  --button-text-color-button-text-inverse: #000000;
+  --button-text-color-button-text-primary: #bc0f0f;
+  --button-text-color-button-text-subdued: #414141;
+  --button-border-color-button-border-primary: #bc0f0f;
+  --button-border-color-button-border-secondary: #000000;
+  --button-border-color-button-border-inverse: #ffffff;
+  --button-border-color-button-border-tertiary: #767676;
+
+  /* ── Spacing ────────────────────────── */
   --space-0: 0px;
   --space-2: 2px;
   --space-4: 4px;
@@ -31,64 +73,214 @@
   --space-28: 28px;
   --space-32: 32px;
   --space-36: 36px;
+  --space-40: 40px;
   --space-48: 48px;
+  --space-52: 52px;
+  --space-56: 56px;
+  --space-60: 60px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-80: 80px;
+  --space-88: 88px;
+  --space-96: 96px;
+  --space-120: 120px;
+  --space-160: 160px;
 
+  /* ── Border radius ──────────────────── */
+  --radius-2: 2px;
   --radius-4: 4px;
   --radius-8: 8px;
   --radius-12: 12px;
   --radius-16: 16px;
+  --radius-20: 20px;
+  --radius-24: 24px;
   --radius-28: 28px;
+  --radius-32: 32px;
+  --radius-36: 36px;
 
-  --font-size-100: 14px;
-  --font-size-200: 16px;
-  --font-size-300: 18px;
-  --font-size-400: 20px;
-  --font-size-500: 24px;
-  --font-size-600: 32px;
-  --font-size-700: 48px;
-  --font-size-800: 64px;
+  /* ── Font weight ────────────────────── */
+  --primitive-weight-font-weight-light: 300;
+  --primitive-weight-font-weight-regular: 400;
+  --primitive-weight-font-weight-medium: 500;
+  --primitive-weight-font-weight-semibold: 600;
+  --primitive-weight-font-weight-bold: 700;
 
-  --line-height-100: 16px;
-  --line-height-200: 20px;
-  --line-height-300: 22px;
-  --line-height-400: 24px;
-  --line-height-500: 28px;
-  --line-height-600: 36px;
+  /* ── Letter spacing ─────────────────── */
+  --primitive-letter-spacing-letter-spacing-tightest: -1px;
+  --primitive-letter-spacing-letter-spacing-tight: -0.5px;
+  --primitive-letter-spacing-letter-spacing-normal: 0px;
+  --primitive-letter-spacing-letter-spacing-wide: 0.75px;
+  --primitive-letter-spacing-letter-spacing-widest: 1px;
 
-  --letter-spacing-tight: -0.5px;
-  --letter-spacing-normal: 0px;
-  --letter-spacing-wide: 0.75px;
+  /* ── Typography (size / line-height per style) ─── */
+  --font-heading-primary-xxl-family: "Moderat Serif";
+  --font-heading-primary-xxl-size: 60px;
+  --font-heading-primary-xxl-weight: 400;
+  --font-heading-primary-xxl-line-height: 60px;
+  --font-heading-primary-xl-family: "Moderat Serif";
+  --font-heading-primary-xl-size: 48px;
+  --font-heading-primary-xl-weight: 400;
+  --font-heading-primary-xl-line-height: 52px;
+  --font-heading-primary-l-family: "Moderat Serif";
+  --font-heading-primary-l-size: 32px;
+  --font-heading-primary-l-weight: 400;
+  --font-heading-primary-l-line-height: 40px;
+  --font-heading-primary-m-family: "Moderat Serif";
+  --font-heading-primary-m-size: 24px;
+  --font-heading-primary-m-weight: 400;
+  --font-heading-primary-m-line-height: 28px;
+  --font-heading-primary-s-family: "Moderat Serif";
+  --font-heading-primary-s-size: 20px;
+  --font-heading-primary-s-weight: 400;
+  --font-heading-primary-s-line-height: 24px;
+
+  --font-heading-secondary-xxl-family: "Stabil Grotesk";
+  --font-heading-secondary-xxl-size: 60px;
+  --font-heading-secondary-xxl-weight: 400;
+  --font-heading-secondary-xxl-line-height: 60px;
+  --font-heading-secondary-xl-family: "Stabil Grotesk";
+  --font-heading-secondary-xl-size: 48px;
+  --font-heading-secondary-xl-weight: 400;
+  --font-heading-secondary-xl-line-height: 52px;
+  --font-heading-secondary-l-family: "Stabil Grotesk";
+  --font-heading-secondary-l-size: 32px;
+  --font-heading-secondary-l-weight: 400;
+  --font-heading-secondary-l-line-height: 40px;
+  --font-heading-secondary-m-family: "Stabil Grotesk";
+  --font-heading-secondary-m-size: 24px;
+  --font-heading-secondary-m-weight: 400;
+  --font-heading-secondary-m-line-height: 28px;
+  --font-heading-secondary-s-family: "Stabil Grotesk";
+  --font-heading-secondary-s-size: 20px;
+  --font-heading-secondary-s-weight: 400;
+  --font-heading-secondary-s-line-height: 24px;
+
+  --font-heading-secondary-strong-xxl-family: "Stabil Grotesk";
+  --font-heading-secondary-strong-xxl-size: 60px;
+  --font-heading-secondary-strong-xxl-weight: 700;
+  --font-heading-secondary-strong-xxl-line-height: 60px;
+  --font-heading-secondary-strong-xl-family: "Stabil Grotesk";
+  --font-heading-secondary-strong-xl-size: 48px;
+  --font-heading-secondary-strong-xl-weight: 700;
+  --font-heading-secondary-strong-xl-line-height: 52px;
+  --font-heading-secondary-strong-l-family: "Stabil Grotesk";
+  --font-heading-secondary-strong-l-size: 32px;
+  --font-heading-secondary-strong-l-weight: 700;
+  --font-heading-secondary-strong-l-line-height: 40px;
+  --font-heading-secondary-strong-m-family: "Stabil Grotesk";
+  --font-heading-secondary-strong-m-size: 24px;
+  --font-heading-secondary-strong-m-weight: 700;
+  --font-heading-secondary-strong-m-line-height: 28px;
+  --font-heading-secondary-strong-s-family: "Stabil Grotesk";
+  --font-heading-secondary-strong-s-size: 20px;
+  --font-heading-secondary-strong-s-weight: 700;
+  --font-heading-secondary-strong-s-line-height: 24px;
+
+  --font-body-primary-l-family: "Moderat Serif";
+  --font-body-primary-l-size: 16px;
+  --font-body-primary-l-weight: 400;
+  --font-body-primary-l-line-height: 24px;
+  --font-body-primary-m-family: "Moderat Serif";
+  --font-body-primary-m-size: 14px;
+  --font-body-primary-m-weight: 400;
+  --font-body-primary-m-line-height: 20px;
+  --font-body-primary-s-family: "Moderat Serif";
+  --font-body-primary-s-size: 12px;
+  --font-body-primary-s-weight: 400;
+  --font-body-primary-s-line-height: 16px;
+
+  --font-body-secondary-l-family: "Stabil Grotesk";
+  --font-body-secondary-l-size: 16px;
+  --font-body-secondary-l-weight: 400;
+  --font-body-secondary-l-line-height: 24px;
+  --font-body-secondary-m-family: "Stabil Grotesk";
+  --font-body-secondary-m-size: 14px;
+  --font-body-secondary-m-weight: 400;
+  --font-body-secondary-m-line-height: 20px;
+  --font-body-secondary-s-family: "Stabil Grotesk";
+  --font-body-secondary-s-size: 12px;
+  --font-body-secondary-s-weight: 400;
+  --font-body-secondary-s-line-height: 16px;
+
+  --font-body-secondary-strong-l-family: "Stabil Grotesk";
+  --font-body-secondary-strong-l-size: 16px;
+  --font-body-secondary-strong-l-weight: 700;
+  --font-body-secondary-strong-l-line-height: 24px;
+  --font-body-secondary-strong-m-family: "Stabil Grotesk";
+  --font-body-secondary-strong-m-size: 14px;
+  --font-body-secondary-strong-m-weight: 700;
+  --font-body-secondary-strong-m-line-height: 20px;
+  --font-body-secondary-strong-s-family: "Stabil Grotesk";
+  --font-body-secondary-strong-s-size: 12px;
+  --font-body-secondary-strong-s-weight: 700;
+  --font-body-secondary-strong-s-line-height: 16px;
+
+  --font-label-l-family: "( K ) Uniforma";
+  --font-label-l-size: 16px;
+  --font-label-l-weight: 400;
+  --font-label-l-line-height: 20px;
+  --font-label-m-family: "( K ) Uniforma";
+  --font-label-m-size: 14px;
+  --font-label-m-weight: 400;
+  --font-label-m-line-height: 16px;
+  --font-label-s-family: "( K ) Uniforma";
+  --font-label-s-size: 12px;
+  --font-label-s-weight: 400;
+  --font-label-s-line-height: 16px;
 }
 
-/* Expose brand tokens as Tailwind utilities. No `inline` — we want the
-   var() indirection preserved so next/font values flow through at runtime. */
+/* =========================================================================
+   Tailwind theme bridge
+   Expose design.md tokens as Tailwind v4 utilities. Not using `inline` so
+   var() references stay live and next/font's runtime --font-sans value
+   propagates to .font-sans utilities. Values are literal (not inlined) to
+   keep the cascade intact.
+   ========================================================================= */
 @theme {
+  /* Colour aliases (short, readable Tailwind classes) */
   --color-brand-red: #bc0f0f;
-  --color-neutral-900: #414141;
-  --color-neutral-700: #707070;
-  --color-neutral-300: #d9d9d9;
+  --color-brand-dark-red: #8c0132;
+  --color-brand-light-red: #d72a2a;
+  --color-neutral-white: #ffffff;
   --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #d9d9db;
+  --color-neutral-500: #a0a0a0;
+  --color-neutral-700: #767676;
+  --color-neutral-900: #414141;
+  --color-neutral-black: #000000;
   --color-surface-brand: #bc0f0f;
+  --color-surface-default: #ffffff;
+  --color-surface-subtle: #f5f5f5;
   --color-text-primary: #414141;
+  --color-text-secondary: #767676;
+  --color-text-tertiary: #a0a0a0;
+  --color-text-inverse: #ffffff;
+  --color-text-brand: #bc0f0f;
+  --color-text-subdued: #414141;
+  --color-border-subtle: #d9d9db;
+  --color-border-primary: #bc0f0f;
 }
 
-/* Fonts — these utilities pick up whatever --font-sans/serif/label next/font
-   set on <html>. The right-hand side is the final fallback string if no class
-   reaches the element. */
+/* Font family utilities use next/font values set by app/layout.tsx on <html>.
+   System-font fallback string is only used before the woff2 loads, or if the
+   variable class ever fails to attach. */
 @layer base {
-  .font-sans { font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif; }
-  .font-serif { font-family: var(--font-serif), ui-serif, Georgia, serif; }
-  .font-label { font-family: var(--font-label), var(--font-sans), ui-sans-serif, sans-serif; }
+  .font-sans  { font-family: var(--font-sans),  "Stabil Grotesk", ui-sans-serif, system-ui, sans-serif; }
+  .font-serif { font-family: var(--font-serif), "Moderat Serif",  ui-serif, Georgia, serif; }
+  .font-label { font-family: var(--font-label), "( K ) Uniforma", var(--font-sans), ui-sans-serif, sans-serif; }
 }
 
+/* =========================================================================
+   Base
+   ========================================================================= */
 html,
 body {
-  background: var(--surface-default);
-  color: var(--text-primary);
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  font-size: var(--font-size-300);
-  line-height: var(--line-height-400);
-  letter-spacing: var(--letter-spacing-tight);
+  background: var(--semantic-surface-color-background-page);
+  color: var(--semantic-text-color-text-primary);
+  font-family: var(--font-sans), "Stabil Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--font-body-secondary-l-size);
+  line-height: var(--font-body-secondary-l-line-height);
+  letter-spacing: var(--primitive-letter-spacing-letter-spacing-tight);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
