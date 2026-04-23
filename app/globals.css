@@ -1,55 +1,8 @@
 @import "tailwindcss";
 
-/* ---------- Font faces (self-hosted from /public/fonts) ---------- */
-@font-face {
-  font-family: "Stabil Grotesk";
-  src: url("/fonts/StabilGrotesk-50Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Stabil Grotesk";
-  src: url("/fonts/StabilGrotesk-60Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Stabil Grotesk";
-  src: url("/fonts/StabilGrotesk-70Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Moderat Serif";
-  src: url("/fonts/Moderat-Serif-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Moderat Serif";
-  src: url("/fonts/Moderat-Serif-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "K Uniforma";
-  src: url("/fonts/KUniforma-50Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "K Uniforma";
-  src: url("/fonts/KUniforma-70Semibold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
+/* Fonts are loaded via next/font/local in app/layout.tsx, which injects
+   --font-family-sans / -serif / -label onto <html>. That makes the CSS
+   variables below pure fallbacks for when those classes aren't applied. */
 
 /* ---------- Design tokens (from design.md) ---------- */
 :root {
