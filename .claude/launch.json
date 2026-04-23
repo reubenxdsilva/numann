@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "humann-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3456"],
+      "cwd": "/Users/reubendsilva/Desktop/humann/site",
+      "port": 3456
+    }
+  ]
+}

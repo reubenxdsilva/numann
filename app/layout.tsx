@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const stabilGrotesk = localFont({
-  variable: "--font-family-sans",
+  variable: "--font-sans",
   display: "swap",
   src: [
     { path: "./fonts/StabilGrotesk-50Regular.woff2", weight: "400", style: "normal" },
@@ -13,7 +13,7 @@ const stabilGrotesk = localFont({
 });
 
 const moderatSerif = localFont({
-  variable: "--font-family-serif",
+  variable: "--font-serif",
   display: "swap",
   src: [
     { path: "./fonts/Moderat-Serif-Light.woff2", weight: "300", style: "normal" },
@@ -22,7 +22,7 @@ const moderatSerif = localFont({
 });
 
 const kUniforma = localFont({
-  variable: "--font-family-label",
+  variable: "--font-label",
   display: "swap",
   src: [
     { path: "./fonts/KUniforma-50Regular.woff2", weight: "400", style: "normal" },

@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
-/* Fonts are loaded via next/font/local in app/layout.tsx, which injects
-   --font-family-sans / -serif / -label onto <html>. That makes the CSS
-   variables below pure fallbacks for when those classes aren't applied. */
-
-/* ---------- Design tokens (from design.md) ---------- */
+/* ---------- Design tokens (from design.md) ----------
+   Typography font families (--font-sans / -serif / -label) are set on <html>
+   by next/font/local in app/layout.tsx. We do NOT redeclare them in :root —
+   that would defeat the point of `variable` in next/font. Tailwind v4's
+   @theme block below exposes them as utilities (font-sans, font-serif,
+   font-label) without `inline`, so the var() references stay live. */
 :root {
   --color-brand-red: #bc0f0f;
   --color-neutral-900: #414141;
@@ -38,10 +39,6 @@
   --radius-16: 16px;
   --radius-28: 28px;
 
-  --font-family-sans: "Stabil Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-family-serif: "Moderat Serif", ui-serif, Georgia, serif;
-  --font-family-label: "K Uniforma", "Stabil Grotesk", ui-sans-serif, sans-serif;
-
   --font-size-100: 14px;
   --font-size-200: 16px;
   --font-size-300: 18px;
@@ -63,25 +60,32 @@
   --letter-spacing-wide: 0.75px;
 }
 
-@theme inline {
-  --color-brand-red: var(--color-brand-red);
-  --color-neutral-900: var(--color-neutral-900);
-  --color-neutral-700: var(--color-neutral-700);
-  --color-neutral-300: var(--color-neutral-300);
-  --color-neutral-100: var(--color-neutral-100);
-  --color-surface-brand: var(--surface-brand);
-  --color-text-primary: var(--text-primary);
+/* Expose brand tokens as Tailwind utilities. No `inline` — we want the
+   var() indirection preserved so next/font values flow through at runtime. */
+@theme {
+  --color-brand-red: #bc0f0f;
+  --color-neutral-900: #414141;
+  --color-neutral-700: #707070;
+  --color-neutral-300: #d9d9d9;
+  --color-neutral-100: #f5f5f5;
+  --color-surface-brand: #bc0f0f;
+  --color-text-primary: #414141;
+}
 
-  --font-sans: var(--font-family-sans);
-  --font-serif: var(--font-family-serif);
-  --font-label: var(--font-family-label);
+/* Fonts — these utilities pick up whatever --font-sans/serif/label next/font
+   set on <html>. The right-hand side is the final fallback string if no class
+   reaches the element. */
+@layer base {
+  .font-sans { font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif; }
+  .font-serif { font-family: var(--font-serif), ui-serif, Georgia, serif; }
+  .font-label { font-family: var(--font-label), var(--font-sans), ui-sans-serif, sans-serif; }
 }
 
 html,
 body {
   background: var(--surface-default);
   color: var(--text-primary);
-  font-family: var(--font-family-sans);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: var(--font-size-300);
   line-height: var(--line-height-400);
   letter-spacing: var(--letter-spacing-tight);
