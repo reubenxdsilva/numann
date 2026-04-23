@@ -101,6 +101,11 @@ function UnderlinedLabel({
         style={{
           fontSize: "var(--font-label-m-size)",
           lineHeight: "var(--font-label-m-line-height)",
+          // Figma "button text" component is (K) Uniforma 70 Semibold. It isn't
+          // a separate style in design.md's Label table (which tops out at 400),
+          // but the shipped design calls for semibold — we use the primitive
+          // font-weight token so it stays tied to the design system.
+          fontWeight: "var(--primitive-weight-font-weight-semibold)",
           letterSpacing:
             "var(--primitive-letter-spacing-letter-spacing-wide)",
           color,
