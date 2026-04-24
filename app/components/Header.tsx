@@ -77,8 +77,10 @@ export default function Header() {
 
 /**
  * Label button — Figma "button text" component.
- * Typography: Label/M — ( K ) Uniforma 400, 14px / 16px, letter-spacing 0.75px,
+ * Typography: Label/S — ( K ) Uniforma 400, 12px / 16px, letter-spacing 0.75px,
  * uppercase, with a 1px underline.
+ * Weight is 600 (semibold) per the Figma design, even though design.md's Label/S
+ * specifies 400. The primitive weight token keeps it tied to the system.
  */
 function UnderlinedLabel({
   children,
@@ -94,16 +96,12 @@ function UnderlinedLabel({
   return (
     <button
       type="button"
-      className="font-label flex flex-col items-center justify-center gap-[var(--space-2)] py-[var(--space-8)] sm:text-font-100 md:text-font-100 lg:text-font-100"
+      className="font-label flex flex-col items-center justify-center gap-[var(--space-2)] py-[var(--space-8)] text-font-100"
     >
       <span
         className="whitespace-nowrap uppercase"
         style={{
-          lineHeight: "var(--font-label-m-line-height)",
-          // Figma "button text" component is (K) Uniforma 70 Semibold. It isn't
-          // a separate style in design.md's Label table (which tops out at 400),
-          // but the shipped design calls for semibold — we use the primitive
-          // font-weight token so it stays tied to the design system.
+          lineHeight: "var(--font-label-s-line-height)",
           fontWeight: "var(--primitive-weight-font-weight-semibold)",
           letterSpacing:
             "var(--primitive-letter-spacing-letter-spacing-wide)",
