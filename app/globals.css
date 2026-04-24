@@ -2,8 +2,49 @@
 
 /* =========================================================================
    Design tokens — verbatim from design.md (Humann UX - Phase 1, 2026-04-18).
+   Font sizes and line heights are responsive per the Figma Variables panel.
    DO NOT edit values here; update design.md and re-sync.
    ========================================================================= */
+/* Responsive font size and line-height tokens (from Figma Variables panel).
+   Mobile (< 768px) overrides on 'sm:' breakpoint, then reverts to desktop at 1024px+. */
+:root {
+  /* Font sizes — Desktop values (default) */
+  --font-size-100: 14px;
+  --font-size-200: 16px;
+  --font-size-300: 18px;
+  --font-size-400: 20px;
+  --font-size-500: 24px;
+  --font-size-600: 28px;
+  --font-size-700: 32px;
+  --font-size-800: 48px;
+  --font-size-900: 60px;
+
+  /* Line heights — Desktop values (default) */
+  --line-height-100: 16px;
+  --line-height-200: 20px;
+  --line-height-300: 22px;
+  --line-height-400: 24px;
+  --line-height-500: 28px;
+  --line-height-600: 36px;
+  --line-height-700: 52px;
+  --line-height-800: 60px;
+}
+
+/* Mobile overrides — apply on sm: breakpoint (< 768px) */
+@media (max-width: 767px) {
+  :root {
+    --font-size-100: 12px;
+    --font-size-200: 14px;
+    --font-size-300: 16px;
+    --font-size-400: 18px;
+    --font-size-500: 20px;
+    --font-size-600: 24px;
+    --font-size-700: 24px;
+    --font-size-800: 32px;
+    --font-size-900: 44px;
+  }
+}
+
 :root {
   /* ── Colour tokens ──────────────────── */
   --primitive-color-brand-red: #bc0f0f;

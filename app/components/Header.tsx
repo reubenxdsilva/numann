@@ -18,10 +18,10 @@ export default function Header() {
         style={{ background: "var(--primitive-color-neutral-900)" }}
       >
         <p
-          className="font-sans whitespace-nowrap"
+          className="font-sans whitespace-nowrap sm:text-font-100 md:text-font-200 lg:text-font-200"
           style={{
-            fontSize: "var(--font-body-secondary-l-size)",
-            lineHeight: "var(--font-body-secondary-l-line-height)",
+            lineHeight:
+              "var(--font-body-secondary-l-line-height)",
             letterSpacing:
               "var(--primitive-letter-spacing-letter-spacing-tight)",
             color: "var(--semantic-text-color-text-inverse)",
@@ -47,10 +47,10 @@ export default function Header() {
           </a>
           <nav
             aria-label="Primary"
-            className="font-sans flex items-center gap-[var(--space-28)]"
+            className="font-sans flex items-center gap-[var(--space-28)] sm:text-font-100 md:text-font-200 lg:text-font-200"
             style={{
-              fontSize: "var(--font-body-secondary-l-size)",
-              lineHeight: "var(--font-body-secondary-l-line-height)",
+              lineHeight:
+                "var(--font-body-secondary-l-line-height)",
               letterSpacing:
                 "var(--primitive-letter-spacing-letter-spacing-tight)",
               color: "var(--semantic-text-color-text-primary)",
@@ -94,12 +94,11 @@ function UnderlinedLabel({
   return (
     <button
       type="button"
-      className="font-label flex flex-col items-center justify-center gap-[var(--space-2)] py-[var(--space-8)]"
+      className="font-label flex flex-col items-center justify-center gap-[var(--space-2)] py-[var(--space-8)] sm:text-font-100 md:text-font-100 lg:text-font-100"
     >
       <span
         className="whitespace-nowrap uppercase"
         style={{
-          fontSize: "var(--font-label-m-size)",
           lineHeight: "var(--font-label-m-line-height)",
           // Figma "button text" component is (K) Uniforma 70 Semibold. It isn't
           // a separate style in design.md's Label table (which tops out at 400),
